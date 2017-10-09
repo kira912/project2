@@ -28,14 +28,12 @@ authController.post('/signup', passport.authenticate('local-signup', {
   failureFlash: true,
 }))
 
-authController.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/private/home',
-  failureRedirect: '/login',
-  failureFlash: true,
-}))
+
 
 authController.get('/private/home', ensureLoggedIn, (req, res, next) => {
-  res.render('private/home')
+  res.render('private/home',{
+    user: req.user
+  })
 })
 
 module.exports = authController

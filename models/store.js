@@ -2,19 +2,19 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const storeSchema = new Schema({
-  id: Number,
   name: {
     type: String,
     required: true,
   },
-  location: {
-    type: {
-      type: String
-    },
-    coordinate: [Number]
-  }
+  places: [{
+    location:{ type: { type: String }, coordinate: [Number]},
+    address: { type: String }
+  }],
+  url: String
 })
 
 storeSchema.index({location: '2dsphere'})
 
-module.exports = mongoose.model('Store', storeSchema)
+const Store = mongoose.model('Store', storeSchema)
+
+module.exports = Store

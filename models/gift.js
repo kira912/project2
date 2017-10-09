@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
 
+const storeSchema = require('../models/store')
+
 const giftSchema = new Schema({
-  id: Number,
+
   name:{
     type: String,
     required: true
@@ -20,7 +21,8 @@ const giftSchema = new Schema({
     type: String,
     required: true
   },
-
+  tags: [String],
+  store: Schema.Types.ObjectId,
 
 })
 
