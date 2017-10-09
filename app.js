@@ -13,6 +13,8 @@ const mongoose = require('mongoose')
 const flash = require('connect-flash')
 
 const User = require('./models/user')
+const Gift = require('./models/gift')
+
 
 mongoose.connect('mongodb://localhost/idkdo', { useMongoClient: true,
 })

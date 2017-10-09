@@ -5,33 +5,37 @@ const { ensureLoggedIn, ensureLoggedOut } = require('../middlewares/auth')
 
 
 authController.get('/login', ensureLoggedOut, (req, res, next) => {
-    res.render('auth/login', {
-        message: req.flash('error')
-    })
+  res.render('auth/login', {
+    message: req.flash('error')
+  })
 })
 
 authController.get('/signup', ensureLoggedOut, (req, res, next) => {
-    res.render('auth/signup', {
-        message: req.flash('error')
-    })
+  res.render('auth/signup', {
+    message: req.flash('error')
+  })
 })
 
 
 authController.get('/logout', ensureLoggedIn, (req, res, next) => {
-    req.logout()
-    res.redirect('/login')
+  req.logout()
+  res.redirect('/login')
 })
 
 authController.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/login',
-    failureRedirect: '/signup',
-    failureFlash: true,
+  successRedirect: '/login',
+  failureRedirect: '/signup',
+  failureFlash: true,
 }))
 
 authController.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/private/home',
-    failureRedirect: '/login',
-    failureFlash: true,
+  successRedirect: '/private/home',
+  failureRedirect: '/login',
+  failureFlash: true,
 }))
+
+authController.get('/private/home', ensureLoggedIn, (req, res, next) => {
+  res.render('private/home')
+})
 
 module.exports = authController
