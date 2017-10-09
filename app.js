@@ -65,10 +65,10 @@ passport.use(
   process.nextTick(() => {
     const { name } = req.body;
     const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
-    const User = new User({
+    const user = new User({
       name,
       email,
-      password
+      password: hashPass
     })
 
     user.save(err => {
