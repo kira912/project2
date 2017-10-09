@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
-const LocalStrategy = require('passport-local').LocalStrategy
+const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 const flash = require('connect-flash')
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost/idkdo', { useMongoClient: true,
 })
 
 const app = express();
-
+console.log("express started")
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,14 +31,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(session({
   secret: 'idkdo',
   resave: false,
-  saveUnitialized: true,
+  saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection})
 }))
 
-app.use(flash())
+
 
 passport.serializeUser((user, cb) => {
   cb(null, user.id)
@@ -102,20 +103,23 @@ passport.use(
   })
 })
 )
-
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
+const index = require('./routes/index')
 const authController = require('./routes/authController')
 
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  next()
 })
 
 app.use('/', authController)
+app.use('/', index)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
