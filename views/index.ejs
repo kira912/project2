@@ -1,3 +1,25 @@
 <h1>Welcome to the </h1>
 
+<div>
+  <% if (allGift.length > 0) { %>
+   <% allGift.forEach((gift) => { %>
+    <p>
+      <%= gift.name %>
+    </p>
+    <img src="<%= gift.imgPath %>" alt="gift picture" width="20%" />
+    <p>
+      <%= gift.price %> €
+    </p>
+    <form action="/giftDetail/<%= gift._id %>" method="get">
+      <input type="submit" value="Voir cadeau">
+    </form>
+   <% }) %>
+  <% } %>
+</div>
+
+<a href="/login">Login</a>
+
+<!-- <form action="/login" method="get">
+  <input type="submit" value="Login">
+</form> -->
 <a href="/logout">Logout</a>

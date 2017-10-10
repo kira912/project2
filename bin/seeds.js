@@ -12,7 +12,84 @@ const storeData = [
         type: "Point",
         coordinates: [48.862428, 2.344637]
       },
-      address: "10bis Rue de l'arc-en-ciel - Niveau 3, Centre Commercial Forum des Halles, 75001 Paris",
+      address: "Centre Commercial Forum des Halles, 75001 Paris",
+    }]
+  },
+
+  {
+    name: "Nature et Découvertes",
+    places: [{
+      location: {
+        type: "Point",
+        coordinates: [48.8748045, 2.3385008999999854]
+      },
+      address: "46 Rue Laffitte, 75009 Paris, France"
+    }]
+  },
+
+  {
+    name: "Nature et Decouvertes",
+    places: [{
+      location: {
+        type: "Point",
+        coordinates: [48.8582877, 2.356079799999975]
+      },
+      address: "20 bis rue Sainte Croix de la Bretonnerie 75004 Paris"
+    }]
+  },
+
+  {
+    name: "Nature et Découvertes",
+    places: [{
+      location: {
+        type: "Point",
+        coordinates: [48.862578, 2.334970300000009]
+      },
+      address: "carrousel du louvre"
+    }]
+  },
+
+  {
+    name: "Nature et Découvertes",
+    places: [{
+      location: {
+        type: "Point",
+        coordinates: [48.8483148, 2.282590300000038]
+      },
+      address: "Centre Commercial Beaugrenelle 75015 Paris"
+    }]
+  },
+
+  {
+   name: "Nature et Découvertes",
+   places: [{
+     location: {
+       type: "Point",
+       coordinates: [48.8429768, 2.3228288999999904]
+     },
+     adress: "Centre commercial Montparnasse"
+   }] 
+  },
+
+  {
+    name: "Nature et Découvertes",
+    places: [{
+      location: {
+        type: "Point",
+        coordinates: [48.8297947, 2.3550950999999714]
+      },
+      adress: "Centre Commercial Italie 2 75013 Paris"
+    }]
+  },
+
+  {
+    name: "Nature et Découvertes",
+    places: [{
+      location: {
+        type: "Point",
+        coordinates: [48.8331947, 2.3863824000000022]
+      },
+      adress: "Bercy Village"
     }]
   }
 ]
